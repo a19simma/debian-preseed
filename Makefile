@@ -13,3 +13,4 @@ build:
 	find -follow -type f ! -name md5sum.txt -print0 | xargs -0 md5sum > isofiles/md5sum.txt
 	chmod -w isofiles/md5sum.txt
 	genisoimage -r -J -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o preseed-${image} isofiles
+	isohybrid preseed-${image}
